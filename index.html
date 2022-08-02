@@ -37,10 +37,30 @@
 			#btn1 {
 				width: 200px;
 				height: 50px;
+				border-radius: 10px;
+				font-size: 120%;
+				background: transparent;
+				transition-duration: 0.3s;
+				border: 2px solid darkgray;
+			}
+
+			#btn1:hover {
+				color: firebrick;
+				width: 170px;
+				height: 60px;
+				border-radius: 100px;
+				font-size: 200%;
+				box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+				border: 2px solid #0099CC;
+			}
+
+			#btn1:active {
+				transform: scale(1.3);
 			}
 		</style>
 		<script>
-			var lastClickTimes = 0;
+			var lastClickTimes = 0,
+				totalTime = 0;
 
 			function numPlus() {
 				if (document.getElementById("btn1").innerText == "0") {
@@ -50,8 +70,11 @@
 			}
 
 			function displayCPS() {
+				totalTime += 1;
 				document.getElementById("CPS").innerHTML =
 					((Number(document.getElementById("btn1").innerText) - lastClickTimes)).toString();
+				document.getElementById("CPSave").innerHTML =
+					((Number(document.getElementById("btn1").innerText) / totalTime)).toFixed(2).toString();
 				lastClickTimes = Number(document.getElementById("btn1").innerText);
 			}
 		</script>
@@ -68,6 +91,8 @@
 			<button type="button" id="btn1" onclick="numPlus()">0</button>
 			<p style="font-size: 120%;">Clicks per second:</p>
 			<p id="CPS" style="font-size: 200%;">0</p>
+			<p style="font-size: 120%;">Average:</p>
+			<p id="CPSave" style="font-size: 200%;">0</p>
 		</div>
 	</body>
 </html>
