@@ -3,25 +3,53 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>RiceQuakes(｡･ω･｡)</title>
-
+		<link rel="icon" href="resources/icon.png">
 		<style>
 			body {
 				background-image: url(resources/background-cover.jpg);
 				background-repeat: no-repeat;
 			}
 
-			.center {
+			#main {
+				position: absolute;
 				text-align: center;
+				width: 99%;
+				top: 20%;
 			}
 
 			#underH1 {
-				width: 15%;
+				position: absolute;
+				left: calc(50% - 100px);
+				margin-top: -10px;
+				opacity: 0.3;
+				background-color: aqua;
+				width: 200px;
+				height: 5px;
+			}
+
+			#interactions {
+				position: absolute;
+				text-align: center;
+				width: 99%;
+				top: 50%;
+			}
+
+			#btn1 {
+				width: 200px;
+				height: 50px;
 			}
 		</style>
 	<body>
-		<h1 class="center">逸一时，误一世</h1>
-		<hr id="underH1" />
-		<p class="center">这里是RiceQuakes！(〃'▽'〃)</p>
+		<div id="main">
+			<h1 class="center"><span style="font-size: 250%;">逸一时，误一世</span></h1>
+			<br>
+			<span id="underH1"> </span>
+			<br>
+			<p class="center"><span style="font-size: 150%;">这里是RiceQuakes！(〃'▽'〃)</p>
+		</div>
+		<div id="interactions">
+			<button type="button" id="btn1">Click me!</button>
+		</div>
 	</body>
 	</head>
 </html>
