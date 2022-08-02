@@ -39,17 +39,35 @@
 				height: 50px;
 			}
 		</style>
+		<script>
+			var lastClickTimes = 0;
+
+			function numPlus() {
+				if (document.getElementById("btn1").innerText == "0") {
+					setInterval(displayCPS, 1000);
+				}
+				document.getElementById("btn1").innerText = (Number(document.getElementById("btn1").innerText) + 1).toString();
+			}
+
+			function displayCPS() {
+				document.getElementById("CPS").innerHTML =
+					((Number(document.getElementById("btn1").innerText) - lastClickTimes)).toString();
+				lastClickTimes = Number(document.getElementById("btn1").innerText);
+			}
+		</script>
+	</head>
 	<body>
 		<div id="main">
 			<h1 class="center"><span style="font-size: 250%;">逸一时，误一世</span></h1>
 			<br>
 			<span id="underH1"> </span>
 			<br>
-			<p class="center"><span style="font-size: 150%;">这里是RiceQuakes！(〃'▽'〃)</p>
+			<p class="center" style="font-size: 150%;">这里是RiceQuakes！(〃'▽'〃)</p>
 		</div>
 		<div id="interactions">
-			<button type="button" id="btn1">Click me!</button>
+			<button type="button" id="btn1" onclick="numPlus()">0</button>
+			<p style="font-size: 120%;">Clicks per second:</p>
+			<p id="CPS" style="font-size: 200%;">0</p>
 		</div>
 	</body>
-	</head>
 </html>
