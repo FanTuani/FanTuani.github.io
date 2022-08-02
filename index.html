@@ -128,10 +128,6 @@
 				info += "<p>用户代理语言: " + navigator.language + "</p>";
 				if (document.getElementById("info").innerHTML != info) {
 					document.getElementById("info").innerHTML = info;
-					setTimeout(function() {
-						navigator.clipboard.writeText(info);
-						alert("已复制到剪贴板！\n我才不在乎你想不想复制呢（逃");
-					}, 50);
 				} else document.getElementById("info").innerHTML = "";
 			}
 		</script>
