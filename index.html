@@ -17,15 +17,13 @@
 				position: absolute;
 				text-align: center;
 				width: 99%;
-				top: 15%;
-			}
-
-			#mainTitle {
+				top: 20%;
 				transition-duration: 0.3s;
 			}
 
-			#mainTitle:hover {
-				font-size: 220%;
+			#main:hover {
+				top: 18.5%;
+				font-size: 110%;
 			}
 
 			#underH1 {
@@ -42,7 +40,7 @@
 				position: absolute;
 				text-align: center;
 				width: 99%;
-				top: 45%;
+				top: 50%;
 			}
 
 			#btn1 {
@@ -51,7 +49,7 @@
 				border-radius: 10px;
 				font-size: 120%;
 				background: transparent;
-				transition-duration: 0.2s;
+				transition-duration: 0.3s;
 				border: 2px solid darkgray;
 			}
 
@@ -68,44 +66,13 @@
 			#btn1:active {
 				transform: scale(1.3);
 			}
-
-			#features {
-				position: absolute;
-				text-align: center;
-				width: 94%;
-				top: 80%;
-			}
-
-			.btn {
-				position: absolute;
-				text-align: center;
-				background: transparent;
-				transition-duration: 0.2s;
-				border-radius: 10px;
-				border: 2px solid mediumvioletred;
-				width: 100px;
-				height: 35px;
-				top: 80%;
-			}
-
-			.btn:hover {
-				transform: scale(1.1);
-				border-radius: 10px;
-				box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-				border: 2px solid #0099CC;
-			}
-
-			.btn:active {
-				transform: scale(0.8);
-			}
 		</style>
 		<script>
 			var lastClickTimes = 0,
 				totalTime = 0;
 
 			function numPlus() {
-				if (document.getElementById("btn1").innerText == "Click me!") {
-					document.getElementById("btn1").innerText = 0;
+				if (document.getElementById("btn1").innerText == "0") {
 					setInterval(displayCPS, 1000);
 				}
 				document.getElementById("btn1").innerText = (Number(document.getElementById("btn1").innerText) + 1).toString();
@@ -119,28 +86,11 @@
 					((Number(document.getElementById("btn1").innerText) / totalTime)).toFixed(2).toString();
 				lastClickTimes = Number(document.getElementById("btn1").innerText);
 			}
-
-			function displayClientInfo() {
-				var info;
-				info = "<p>浏览器代号: " + navigator.appCodeName + "</p>";
-				info += "<p>浏览器名称: " + navigator.appName + "</p>";
-				info += "<p>浏览器版本: " + navigator.appVersion + "</p>";
-				info += "<p>启用Cookies: " + navigator.cookieEnabled + "</p>";
-				info += "<p>硬件平台: " + navigator.platform + "</p>";
-				info += "<p>用户代理: " + navigator.userAgent + "</p>";
-				info += "<p>用户代理语言: " + navigator.language + "</p>";
-				if (document.getElementById("info").innerHTML != info) {
-					document.getElementById("info").innerHTML = info;
-					setTimeout(function() {
-						navigator.clipboard.writeText(info);
-						alert("已复制到剪贴板！\n我才不在乎你想不想复制呢（逃");
-					}, 50);
-				} else document.getElementById("info").innerHTML = "";
-			}
 		</script>
 	</head>
 	<body>
 		<div id="main">
+<<<<<<< HEAD
 			<h1 class="center" id="mainTitle"><span style="font-size: 250%;> </span></h1>
 			<h1 class="center" id="mainTitle"><span style="font-size: 250%;>生日快乐</span></h1>
 			<br>
@@ -151,14 +101,28 @@
  -->		</div>
 		<!-- <div id="interactions">	
 			<button type="button" id="btn1" onclick="numPlus()">Click me!</button>
+=======
+			<h1 class="center"><span style="font-size: 250%;">逸一时，误一世</span></h1>
+			<br>
+			<span id="underH1"> </span>
+			<br>
+			<p class="center" style="font-size: 150%;">这里是RiceQuakes！(〃'▽'〃)</p>
+		</div>
+		<div id="interactions">
+			<button type="button" id="btn1" onclick="numPlus()">0</button>
+>>>>>>> parent of 7103567 (Update index.html)
 			<p style="font-size: 120%;">Clicks per second:</p>
 			<p id="CPS" style="font-size: 200%;">0</p>
 			<p style="font-size: 120%;">Average:</p>
 			<p id="CPSave" style="font-size: 200%;">0</p>
+<<<<<<< HEAD
 		</div> -->
 		<div id="features" class="center">
 			<button type="button" id="clientInfo" class="btn" onclick="displayClientInfo()">访问信息</button>
 		</div>
 		<div id="info" style="font-size: 100%;"></div>
+=======
+		</div>
+>>>>>>> parent of 7103567 (Update index.html)
 	</body>
 </html>
