@@ -48,6 +48,8 @@ function createPeashooter(onclick) {
     peashooter.attack = []
     shooters.push(peashooter)
 
+    let card = document.getElementById('card')
+    card.style.opacity = 0.7
 
     // cancel right click menu
     document.oncontextmenu = function (event) {
@@ -62,6 +64,8 @@ function createPeashooter(onclick) {
     document.onmousedown = function (event) {
         document.onmousedown = null
         document.onmousemove = null
+
+        card.style.opacity = 1
 
         if (event.button === 0) {
             let top = peashooter.offsetTop - 45
