@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e18a6f98-dec1-47c4-826a-bb15674e3f6a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pvz.html" beforeDir="false" afterPath="$PROJECT_DIR$/pvz.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites.js" beforeDir="false" afterPath="$PROJECT_DIR$/sprites.js" afterDir="false" />
-    </list>
+    <list default="true" id="e18a6f98-dec1-47c4-826a-bb15674e3f6a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -45,6 +43,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "D:/Github/pvz",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,6 +53,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\pvz\js" />
+      <recent name="D:\Github\pvz\old" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,7 +68,9 @@
       <option name="presentableId" value="Default" />
       <updated>1714956069768</updated>
       <workItem from="1714956070832" duration="3212000" />
-      <workItem from="1714961724733" duration="40517000" />
+      <workItem from="1714961724733" duration="44414000" />
+      <workItem from="1715214345614" duration="8675000" />
+      <workItem from="1715259730278" duration="27360000" />
     </task>
     <servers />
   </component>

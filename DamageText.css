@@ -1,0 +1,46 @@
+@keyframes fadeOutUpRed {
+    from {
+        color: orangered;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        color: black;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeOutUpGreen {
+    from {
+        color: lawngreen;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        color: black;
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes damageEffect {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.damageTextRed {
+    animation: fadeOutUpRed 1s forwards;
+}
+
+.damageTextGreen {
+    animation: fadeOutUpGreen 1s forwards;
+}
+
+.damageEff {
+    animation: damageEffect 0.1s;
+}
