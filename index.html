@@ -1,68 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Plants VS Zombies</title>
-        <link rel="stylesheet" type="text/css" href="DamageText.css">
-    </head>
-    <style>
-        #container {
-            width: 950px;
-            overflow: hidden;
-        }
-
-        #background {
-            margin-left: -100px;
-        }
-
-        .card {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
-    <body ondragstart="return false">
-        <div id="container">
-            <img id="background" src="images/Background.jpg">
-            <img class="card" onclick="drag(0)" src="images/Peashooter.png">
-            <img class="card" style="top: 60px" onclick="drag(1)" src="images/SnowPea.png">
-            <img class="card" style="top: 120px" onclick="drag(2)" src="images/Repeater.png">
-            <img class="card" style="top: 180px" onclick="drag(3)" src="images/TallNut.png">
-            <img class="card" style="top: 240px" onclick="drag(4)" src="images/SunFlower.png">
-            <img class="card" style="top: 300px" onclick="drag(5)" src="images/Jalapeno.png">
-            <img class="card" style="top: 360px" onclick="drag(6)" src="images/CherryBomb.png">
-        </div>
-    </body>
-    <script src="js/ui.js"></script>
-    <script src="js/Zombie.js"></script>
-    <script src="js/Plant.js"></script>
-    <script src="js/Bullet.js"></script>
-    <script>
-        let container = document.getElementById('container')
-        let cardSrc = ['images/Peashooter', 'images/SnowPea', 'images/Repeater', 'images/TallNut',
-            'images/SunFlower', 'images/Jalapeno', 'images/CherryBomb']
-        let plants = [], zombies = [], bullets = []
-        let killedZombies = 0
-
-        window.onload = function () {
-            // let zombieNum = window.prompt("the number of zombies you want to challenge", 10);
-            let zombieNum = 20
-            startSpawnZombies(zombieNum, 500)
-
-            let checkWinInv = setInterval(() => {
-                for (let zombie of zombies) {
-                    if (zombie.element.offsetLeft < 50) {
-                        alert('lose')
-                        location.reload()
-                        clearInterval(checkWinInv)
-                    }
-                }
-                if (killedZombies >= zombieNum) {
-                    alert('win')
-                    location.reload()
-                    clearInterval(checkWinInv)
-                }
-            }, 500)
-        }
-    </script>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <script type="module" crossorigin src="/assets/index-UTcNRqO1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bql1LPOO.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
 </html>
