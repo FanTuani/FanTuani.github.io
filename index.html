@@ -14,23 +14,23 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/assets/style.css" />
-    <script defer src="/assets/main.js"></script>
+    <link rel="icon" href="./favicon.ico" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <script defer src="./assets/main.js"></script>
   </head>
   <body data-view-state="loading">
     <div class="sky-noise" aria-hidden="true"></div>
     <div class="page-shell">
       <header class="hero" id="top">
         <div class="hero__backdrop" aria-hidden="true">
-          <div class="moon"></div>
-          <div class="stars stars-a"></div>
-          <div class="stars stars-b"></div>
-          <div class="cloud cloud-a"></div>
-          <div class="cloud cloud-b"></div>
-          <div class="mountain mountain-far"></div>
-          <div class="mountain mountain-mid"></div>
-          <div class="terrain"></div>
+          <div class="moon" data-parallax-layer="0.08"></div>
+          <div class="stars stars-a" data-parallax-layer="0.02"></div>
+          <div class="stars stars-b" data-parallax-layer="0.04"></div>
+          <div class="cloud cloud-a" data-parallax-layer="0.05"></div>
+          <div class="cloud cloud-b" data-parallax-layer="0.06"></div>
+          <div class="mountain mountain-far" data-parallax-layer="0.03"></div>
+          <div class="mountain mountain-mid" data-parallax-layer="0.05"></div>
+          <div class="terrain" data-parallax-layer="0.02"></div>
         </div>
 
         <nav class="hero__nav" aria-label="页面导航">
@@ -40,7 +40,12 @@
         </nav>
 
         <div class="hero__content">
-          <p class="eyebrow">像素冒险入口</p>
+          <div class="hero__motd">
+            <span class="hero__motd-label">MOTD</span>
+            <p class="hero__motd-text" id="hero-motd">
+              正在读取服务器门口木牌上的第一行字。
+            </p>
+          </div>
           <h1 class="hero__title">ricequakes.top</h1>
           <p class="hero__summary" id="hero-summary">
             正在侦测这片方块大陆的空气、火把与玩家脚步声。
@@ -59,12 +64,6 @@
             <div class="metric">
               <span class="metric__label">推荐版本</span>
               <strong class="metric__value" id="metric-version">等待同步</strong>
-            </div>
-            <div class="metric">
-              <span class="metric__label">连接地址</span>
-              <strong class="metric__value metric__value--mono" id="metric-hostname">
-                ricequakes.top
-              </strong>
             </div>
           </div>
 
@@ -97,7 +96,7 @@
 
           <dl class="status-grid" aria-label="服务器详情">
             <div class="status-grid__row">
-              <dt>主机名</dt>
+              <dt>连接地址</dt>
               <dd id="detail-hostname">ricequakes.top</dd>
             </div>
             <div class="status-grid__row">

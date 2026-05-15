@@ -3,12 +3,13 @@ const REFRESH_INTERVAL = 300000;
 const SERVER_ADDRESS = "ricequakes.top";
 
 const elements = {
+  hero: document.querySelector(".hero"),
   statusPill: document.querySelector("#status-pill"),
+  heroMotd: document.querySelector("#hero-motd"),
   heroSummary: document.querySelector("#hero-summary"),
   heroOnlineCopy: document.querySelector("#hero-online-copy"),
   metricPlayers: document.querySelector("#metric-players"),
   metricVersion: document.querySelector("#metric-version"),
-  metricHostname: document.querySelector("#metric-hostname"),
   statusSummary: document.querySelector("#status-summary"),
   detailHostname: document.querySelector("#detail-hostname"),
   detailIp: document.querySelector("#detail-ip"),
@@ -23,6 +24,9 @@ const elements = {
   copyButton: document.querySelector("#copy-button"),
   copyFeedback: document.querySelector("#copy-feedback"),
 };
+
+const parallaxLayers = Array.from(document.querySelectorAll("[data-parallax-layer]"));
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function sanitizeLine(value) {
   if (typeof value !== "string") {
@@ -57,9 +61,39 @@ function setViewState(state) {
   document.body.dataset.viewState = state;
 }
 
+function updateParallax(clientX, clientY) {
+  if (prefersReducedMotion.matches || parallaxLayers.length === 0 || !elements.hero) {
+    return;
+  }
+
+  const rect = elements.hero.getBoundingClientRect();
+  const offsetX = (clientX - rect.left) / rect.width - 0.5;
+  const offsetY = (clientY - rect.top) / rect.height - 0.5;
+
+  for (const layer of parallaxLayers) {
+    const depth = Number(layer.dataset.parallaxLayer || 0);
+    const moveX = offsetX * depth * 1300;
+    const moveY = offsetY * depth * 900;
+    const rotate = layer.classList.contains("moon") ? " rotate(8deg)" : "";
+    layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)${rotate}`;
+  }
+}
+
+function resetParallax() {
+  if (prefersReducedMotion.matches) {
+    return;
+  }
+
+  for (const layer of parallaxLayers) {
+    const rotate = layer.classList.contains("moon") ? " rotate(8deg)" : "";
+    layer.style.transform = `translate3d(0, 0, 0)${rotate}`;
+  }
+}
+
 function renderLoading() {
   setViewState("loading");
   elements.statusPill.textContent = "读取中";
+  elements.heroMotd.textContent = "正在读取服务器门口木牌上的第一行字。";
   elements.heroSummary.textContent = "正在侦测这片方块大陆的空气、火把与玩家脚步声。";
   elements.heroOnlineCopy.textContent = "等待服务器回音...";
   elements.statusSummary.textContent = "正在等待远处的区块把当前状态传回来。";
@@ -90,6 +124,7 @@ function renderData(data) {
   setViewState(isOnline ? "online" : "offline");
 
   elements.statusPill.textContent = isOnline ? "在线中" : "暂时离线";
+  elements.heroMotd.textContent = motdLines[0];
   elements.heroSummary.textContent = isOnline
     ? "世界在线，火把已点亮。现在可以直接进入这张地图。"
     : "信标还在，但这片世界暂时没有点亮。稍后再回来看看。";
@@ -98,7 +133,6 @@ function renderData(data) {
     : "服务器接口可达，但当前游戏世界没有响应在线状态。";
   elements.metricPlayers.textContent = `${playerOnline ?? "--"} / ${playerMax ?? "--"}`;
   elements.metricVersion.textContent = version;
-  elements.metricHostname.textContent = hostname;
 
   elements.statusSummary.textContent = isOnline
     ? "状态正常，客户端可按下方地址直接尝试连接。"
@@ -125,11 +159,11 @@ function renderData(data) {
 function renderError() {
   setViewState("error");
   elements.statusPill.textContent = "连接失败";
+  elements.heroMotd.textContent = "今晚的云层太厚，世界边界没有传回新的标语。";
   elements.heroSummary.textContent = "这次没有收到服务器回声，可能是网络波动，也可能是接口暂时失联。";
   elements.heroOnlineCopy.textContent = "状态读取失败，请稍后等待下一次自动刷新。";
   elements.metricPlayers.textContent = "-- / --";
   elements.metricVersion.textContent = "读取失败";
-  elements.metricHostname.textContent = SERVER_ADDRESS;
   elements.statusSummary.textContent = "页面还在，但本次没有拿到可用数据。";
   elements.detailHostname.textContent = SERVER_ADDRESS;
   elements.detailIp.textContent = "无法获取";
@@ -180,6 +214,13 @@ async function copyServerAddress() {
 }
 
 elements.copyButton.addEventListener("click", copyServerAddress);
+
+if (elements.hero && !prefersReducedMotion.matches) {
+  elements.hero.addEventListener("mousemove", (event) => {
+    updateParallax(event.clientX, event.clientY);
+  });
+  elements.hero.addEventListener("mouseleave", resetParallax);
+}
 
 renderLoading();
 fetchServerStatus();
